@@ -2,8 +2,8 @@ package org.example.gameUtils;
 
 public class Coordinate {
 
-    private int row;
-    private int column;
+    private final int row;
+    private final int column;
 
     public Coordinate(String coordinateString){
         if( coordinateString == null || coordinateString.length() > 3 ){
@@ -24,7 +24,7 @@ public class Coordinate {
     }
 
     public Coordinate(int index){
-        row = index % 10;
+        row = index / 10;
         column = index - ( row* 10 );
     }
 
