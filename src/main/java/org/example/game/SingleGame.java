@@ -1,4 +1,4 @@
-package org.example;
+package org.example.game;
 
 import org.example.player.*;
 
@@ -36,9 +36,9 @@ public class SingleGame extends AbstractGame{
 
         player1 = new HumanPlayer("Alice", namePlayer1, scanner);
         if(strength.equals("h")){
-            player2 = new AiPlayerRandom(namePlayer1, "Alice");
+            player2 = new AiPlayer(namePlayer1, "Alice", new RandomAlgorithm());
         }else{
-            player2 = new AiPlayerRandom(namePlayer1, "Alice");
+            player2 = new AiPlayer(namePlayer1, "Alice", new RandomAlgorithm());
         }
 
         System.out.println("Map loaded successfully.");

@@ -2,18 +2,14 @@ package org.example.player;
 
 import org.example.gameUtils.Coordinate;
 
-public class AiPlayerDiagonal extends AbstractAiPlayer{
+import java.util.Random;
 
-
+public class DiagonalAlgorithm implements AiAlgorithm{
 
     int[] shots;
 
-    public AiPlayerDiagonal(String opponent, String name) {
-        super(opponent, name);
-    }
-
     @Override
-    protected Coordinate getCoordinate() {
+    public Coordinate getCoordinate() {
 
         int index = generateRandomInRange(0, 99);
         Coordinate target = new Coordinate(index);
@@ -28,5 +24,10 @@ public class AiPlayerDiagonal extends AbstractAiPlayer{
             }
         }
         return false;
+    }
+
+    protected int generateRandomInRange(int min, int max){
+        Random r = new Random();
+        return r.nextInt(max - min) + min;
     }
 }

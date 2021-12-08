@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.game.AbstractGame;
+import org.example.game.MultiGame;
+import org.example.game.SingleGame;
+
 import java.util.Scanner;
 
 /**

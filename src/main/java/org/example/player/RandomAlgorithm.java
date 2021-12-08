@@ -4,21 +4,19 @@ import org.example.gameUtils.Coordinate;
 
 import java.util.Random;
 
-public class AiPlayerRandom extends AbstractAiPlayer {
+public class RandomAlgorithm implements AiAlgorithm{
 
-
-    public AiPlayerRandom(String opponent, String name) {
-        super(opponent, name);
+    protected int generateRandomInRange(int min, int max){
+        Random r = new Random();
+        return r.nextInt(max - min) + min;
     }
 
-    @Override
-    protected Coordinate getCoordinate() {
+
+    public Coordinate getCoordinate() {
 
         int index = generateRandomInRange(0, 99);
         Coordinate target = new Coordinate(index);
         System.out.println(target);
         return target;
     }
-
-
 }
