@@ -2,21 +2,32 @@ package org.example.player;
 
 import org.example.gameUtils.Coordinate;
 
-import java.util.Random;
+import java.util.Arrays;
+
+import static org.example.gameUtils.MathUtil.generateRandomInRange;
 
 public class RandomAlgorithm implements AiAlgorithm{
 
-    protected int generateRandomInRange(int min, int max){
-        Random r = new Random();
-        return r.nextInt(max - min) + min;
-    }
+    char[] field;
 
+    public RandomAlgorithm(){
+        field = new char[100];
+        Arrays.fill(field, 'o');
+    }
 
     public Coordinate getCoordinate() {
 
-        int index = generateRandomInRange(0, 99);
-        Coordinate target = new Coordinate(index);
-        System.out.println(target);
-        return target;
+        int index;
+        while(true){
+            index = generateRandomInRange(0, 99);
+            if(field[index] == 'o'){
+                field[index] = 'x';
+                Coordinate target = new Coordinate(index);
+                System.out.println(target);
+                return target;
+            }
+        }
+
     }
+
 }

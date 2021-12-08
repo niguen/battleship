@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class HumanPlayer extends AbstractPlayer {
 
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
 
     public HumanPlayer(String opponent, String name, Scanner scanner) {
@@ -16,7 +16,7 @@ public class HumanPlayer extends AbstractPlayer {
     }
 
     @Override
-    protected Coordinate getCoordinate() {
+    protected Coordinate getCoordinate() throws IllegalArgumentException{
         Coordinate coordinate;
         String input;
 
@@ -26,7 +26,7 @@ public class HumanPlayer extends AbstractPlayer {
             coordinate = new Coordinate( input );
         } catch(IllegalArgumentException ex){
             System.err.println("Wrong Coordinate format");
-            return null;
+            throw new IllegalArgumentException();
         }
         return coordinate;
     }

@@ -6,5 +6,5 @@ public interface AiAlgorithm {
 
     Coordinate getCoordinate();
 
-
+    default void hitNotifier() {}
 }

@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.game.AbstractGame;
 import org.example.game.MultiGame;
+import org.example.game.SimulatedGame;
 import org.example.game.SingleGame;
 
 import java.util.Scanner;
@@ -20,18 +21,23 @@ public class App
         System.out.println( "Welcome to Battleship!" );
         System.out.print("\n");
 
+        label:
         while(true) {
-            System.out.println("Please select a game mode single player(s) or multi player (m):");
+            System.out.println("Please select a game mode single(s), multiplayer(m) or simulated(sim):");
             String input = scanner.nextLine();
-            if (input.equals("s")) {
-                System.out.println("Gamemode is: single Player");
-                // TODO: Implement singleGame
-                game = new SingleGame(scanner);
-                break;
-            } else if (input.equals("m")) {
-                System.out.println("Gamemode is: multi Player");
-                game = new MultiGame(scanner);
-                break;
+            switch (input) {
+                case "s":
+                    System.out.println("Game mode is: single");
+                    game = new SingleGame(scanner);
+                    break label;
+                case "m":
+                    System.out.println("Game mode is: multiplayer");
+                    game = new MultiGame(scanner);
+                    break label;
+                case "sim":
+                    System.out.println("Game mode is: simulated");
+                    game = new SimulatedGame(scanner);
+                    break label;
             }
             System.out.println("Sorry, I did't get that.");
         }

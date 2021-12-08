@@ -26,23 +26,23 @@ public abstract class AbstractGame {
         while(true){
             System.out.println("------------------------------------------\n");
             player1Result = player1.attack();
-            if(player1Result.equals("All enemy ships destroyed")){
-                anounceWinner(player1);
-                break;
+            if(player1.hasWon()){
+                announceWinner(player1);
+                return;
             }
             System.out.println(player1Result);
 
             System.out.println("------------------------------------------\n");
             player2Result = player2.attack();
-            if(player2Result.equals("All enemy ships destroyed")){
-                anounceWinner(player2);
-                break;
+            if(player2.hasWon()){
+                announceWinner(player2);
+                return;
             }
             System.out.println(player2Result);
         }
     }
 
-    private void anounceWinner(AbstractPlayer winner){
+    private void announceWinner(AbstractPlayer winner){
         System.out.println("Congratulations " + winner.getName() + ", you won!!!");
     }
 

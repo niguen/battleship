@@ -1,6 +1,5 @@
 package org.example.gameUtils;
 
-import java.util.Arrays;
 
 import static org.example.fileUtils.FileResourcesUtils.getArrayFromFile;
 
@@ -10,38 +9,33 @@ public class Field {
 
     public Field(String fileName){
         char[] field = getArrayFromFile(fileName);
-        validateField(field);
+        //validateField(field);
         fieldArray = field;
     }
 
 
 
-    public String shootAt(Coordinate coordinate) {
+    public ShotResult shootAt(Coordinate coordinate) {
 
         int index = coordinate.getArrayIndex();
-        int numShips = getNumberOfShips(fieldArray);
 
-        if (fieldArray[index] == '~') {
+        char currentField = fieldArray[index];
+        if (currentField == '~') {
             fieldArray[index] = 'o';
-            return "Oooops Just water...";
+            return ShotResult.MISS;
         } else if (fieldArray[index] == 'x' || fieldArray[index] == 'o') {
-            return "What are you doing? You tried that before..";
+            return ShotResult.MISS;
         } else {
             fieldArray[index] = 'x';
-            if (getNumberOfShips(fieldArray) == 0) {
-                return "All ships sunk";
-            } else if (numShips > getNumberOfShips(fieldArray)) {
-                return "Enemy ship destroyed!";
-            }
-            return "Enemy ship hit!";
+            return ShotResult.HIT;
         }
     }
 
-    private int getNumberOfShips(char[] field){
+    public int getNumberOfShips(){
         int counter = 0;
 
         for(int i = 1; i <=5; i++){
-            for(char value : field){
+            for(char value : fieldArray){
                 if(Character.getNumericValue(value) == i){
                     counter++;
                     break;
@@ -76,10 +70,11 @@ public class Field {
             }
             builder.append(" \n");
             lineNumber++;
-        };
+        }
         return builder.toString();
     }
 
+    /*
     private void validateField(char[] field){
 
         if(field.length != 100){
@@ -119,6 +114,6 @@ public class Field {
     }
 
 
-
+*/
 
 }
