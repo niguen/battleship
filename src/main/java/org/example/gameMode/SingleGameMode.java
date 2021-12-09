@@ -7,6 +7,9 @@ import org.example.player.*;
 
 import static org.example.gameUtils.MathUtil.generateRandomInRange;
 
+/**
+ * A single player mode with one human player and one Ai player
+ */
 public class SingleGameMode implements GameMode {
 
 
@@ -49,8 +52,6 @@ public class SingleGameMode implements GameMode {
 
 
     public void play(){
-        Coordinate coordinate;
-        String attackMessage;
 
         while(true){
             // player 1

@@ -3,14 +3,25 @@ package org.example.gameUtils;
 
 import java.util.HashMap;
 
+/**
+ * This class handles the representation of a field.
+ * The main operations are: Validating field data from files,
+ * Getting a visual representation of a field and handling attacks.
+ */
 import static org.example.fileUtils.FileResourcesUtils.getArrayFromFile;
 
 public class Field {
 
     private final char[] fieldArray;
+
+
     private final HashMap<Character, Integer> shipsConfig = new HashMap<>();
 
-
+    /**
+     * Reads the field from the file, validates it and saves the field into the fieldArray.
+     * @param fileName: The player name
+     * @throws IllegalArgumentException: Thrown when the field in the file is invalid
+     */
     public Field(String fileName) throws IllegalArgumentException {
 
         shipsConfig.put('1', 4);
@@ -29,7 +40,12 @@ public class Field {
     }
 
 
-
+    /**
+     * Handles the attack by marking the position within the array as 'x' (HIT) or 'o' (Miss)
+     *
+     * @param coordinate The coordinate to shoot at
+     * @return A shot result that can either be HIT, Miss or SUNK
+     */
     public ShotResult shootAt(Coordinate coordinate) {
 
         int index = coordinate.getArrayIndex();
@@ -50,6 +66,11 @@ public class Field {
         }
     }
 
+    /**
+     * This method counts the remaining ships on the field.
+     *
+     * @return the number of Ships still available on the field
+     */
     public int getNumberOfShips(){
         int counter = 0;
 
@@ -64,6 +85,10 @@ public class Field {
         return counter;
     }
 
+    /**
+     * Produces a visual representation of the field.
+     * @return
+     */
     public String toString(){
         StringBuilder builder = new StringBuilder();
         builder.append("   |");
@@ -94,6 +119,11 @@ public class Field {
     }
 
 
+    /**
+     * Is used by the constructor to check, whether a given field is valid:
+     * - has the right dimensions
+     * - contains the correct amount of ships
+     */
     private void validateField(){
         if(fieldArray.length != 100){
             throw new IllegalArgumentException("Wrong field length.");
@@ -108,6 +138,11 @@ public class Field {
 
     }
 
+    /**
+     * A helper for the validateField method. Checks the length of a given ship.
+     * @param shipIndex
+     * @param shipLength
+     */
     private void validateShipIntegrity(char shipIndex, int shipLength){
         int lengthCounter = 0;
 

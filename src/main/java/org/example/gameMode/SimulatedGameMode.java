@@ -4,7 +4,10 @@ import org.example.GameView;
 import org.example.gameUtils.Field;
 import org.example.player.*;
 
-
+/**
+ * Game mode with two AiPlayers playing against each other.
+ * Can be used to test the performance and analyze different AiAlgorithms.
+ */
 public class SimulatedGameMode implements GameMode {
 
 
@@ -55,7 +58,6 @@ public class SimulatedGameMode implements GameMode {
 
 
     public void play(){
-        String attackMessage;
 
         while(true){
             // player 1

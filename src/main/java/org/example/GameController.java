@@ -5,7 +5,10 @@ import org.example.gameMode.MultiGameMode;
 import org.example.gameMode.SimulatedGameMode;
 import org.example.gameMode.SingleGameMode;
 
-public class GameController {
+/**
+ * The controller class for the game that has a view-class and a game-mode.
+ */
+class GameController {
 
     private final GameView view;
     private GameMode mode;

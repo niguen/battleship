@@ -6,6 +6,9 @@ import org.example.gameUtils.Field;
 import org.example.player.AbstractPlayer;
 import org.example.player.HumanPlayer;
 
+/**
+ * Normal game mode with two human player playing against each other
+ */
 public class MultiGameMode implements GameMode {
 
     private HumanPlayer player1;

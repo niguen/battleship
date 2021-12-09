@@ -1,10 +1,11 @@
 package org.example;
 
 
-import org.example.gameUtils.Coordinate;
-
 import java.util.Scanner;
 
+/**
+ * A simple View-class that handles the input and output for the game.
+ */
 public class GameView {
 
     private final Scanner scanner;
@@ -79,10 +80,6 @@ public class GameView {
             response = scanner.nextLine();
         }while (response.equals("n"));
         return namePlayer2;
-    }
-
-    public void printAiName(String name){
-        System.out.println("Ai name is: " + name);
     }
 
     public String getAiStrength(){
