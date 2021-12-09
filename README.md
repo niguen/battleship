@@ -9,12 +9,14 @@ This is a simple Battleship implementation with Java.
 ## Instructions
 
 Before starting the game each player will have to add a text-file 
-to the resources' directory that contains the the field setup:
+to the resources' directory that contains the field-setup. Alternativly one of the sample names can be uesd to play the game:
+
+The sample names are: Alice, bob, Dave, Charles, Dave, Peter or Simon
 
 The field should contain five ships, represented by numbers. 
-All other fields are water, represented by the '~'-character. Every field has the dimension of 10 x 10 characters.
+All other fields are water, represented by the '~'-character. Every field has the dimension of 10 x 10 characters (You can add some spaces for better visibility).
 
- The ships have different lengths:
+The ships have different lengths:
 
 | Ship index | length |
 | ---------- | ------ |
@@ -39,10 +41,9 @@ A sample field should look like this:
 ~ ~ ~ ~ ~ 4 4 ~ ~ ~
 ```
 
-The name of the file should be the name the player will use in when playing the game. 
+**The name of the file has to be the name, the player will use when playing the game!**
 
 Example: name: Simon -> file: Simon.txt
 
-By default, there are already some sample files included in the directory, that can be also be used.
-
-The available names are: Alice, Bob, Charles, Dave, Peter and Simon.
+When all files are added the game can start. 
+Good Luck 😉
