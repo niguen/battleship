@@ -1,35 +1,28 @@
 package org.example.player;
 
 import org.example.gameUtils.Coordinate;
-
-import java.util.Scanner;
+import org.example.gameUtils.Field;
+import org.example.gameUtils.ShotResult;
 
 public class HumanPlayer extends AbstractPlayer {
 
-
-    private final Scanner scanner;
-
-
-    public HumanPlayer(String opponent, String name, Scanner scanner) {
-        super(opponent, name);
-        this.scanner = scanner;
+    public HumanPlayer(Field opponentField, String name) {
+        super(opponentField, name);
     }
 
-    @Override
-    protected Coordinate getCoordinate() throws IllegalArgumentException{
-        Coordinate coordinate;
-        String input;
+    public String attack(Coordinate coordinate){
 
-        System.out.println( "Please enter Coordinate:" );
-        input = scanner.nextLine();
-        try{
-            coordinate = new Coordinate( input );
-        } catch(IllegalArgumentException ex){
-            System.err.println("Wrong Coordinate format");
-            throw new IllegalArgumentException();
-        }
-        return coordinate;
+            ShotResult result = field.shootAt(coordinate);
+            if(result == ShotResult.HIT){
+                return "Enemy ship hit!";
+            }else if(result == ShotResult.SUNK){
+                return "Enemy ship destroyed";
+            }
+            else{
+                return "Just water ...";
+            }
     }
+
 
 
 }

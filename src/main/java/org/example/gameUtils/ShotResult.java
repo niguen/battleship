@@ -2,5 +2,6 @@ package org.example.gameUtils;
 
 public enum ShotResult {
     HIT,
-    MISS
+    MISS,
+    SUNK
 }

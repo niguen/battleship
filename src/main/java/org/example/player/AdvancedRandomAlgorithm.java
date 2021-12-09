@@ -4,10 +4,14 @@ import org.example.gameUtils.Coordinate;
 
 import java.util.Arrays;
 import java.util.LinkedList;
-
-
 import static org.example.gameUtils.MathUtil.generateRandomInRange;
 
+
+/**
+ * more efficient random algorithm that also shoots at the surrounding positions,
+ * when hitting a target.
+ * source: https://www.datagenetics.com/blog/december32011/
+ */
 public class AdvancedRandomAlgorithm implements AiAlgorithm{
 
     char[] field;

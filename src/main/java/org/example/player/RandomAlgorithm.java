@@ -6,6 +6,11 @@ import java.util.Arrays;
 
 import static org.example.gameUtils.MathUtil.generateRandomInRange;
 
+/**
+ * simple random Algorithm that shoots at random positions
+ * without hitting the same position twice
+ *
+ */
 public class RandomAlgorithm implements AiAlgorithm{
 
     char[] field;

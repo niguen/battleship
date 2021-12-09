@@ -1,16 +1,31 @@
 package org.example.gameUtils;
 
 
+import java.util.HashMap;
+
 import static org.example.fileUtils.FileResourcesUtils.getArrayFromFile;
 
 public class Field {
 
-    char[] fieldArray;
+    private final char[] fieldArray;
+    private final HashMap<Character, Integer> shipsConfig = new HashMap<>();
 
-    public Field(String fileName){
-        char[] field = getArrayFromFile(fileName);
-        //validateField(field);
-        fieldArray = field;
+
+    public Field(String fileName) throws IllegalArgumentException {
+
+        shipsConfig.put('1', 4);
+        shipsConfig.put('2', 3);
+        shipsConfig.put('3', 3);
+        shipsConfig.put('4', 2);
+        shipsConfig.put('5', 2);
+
+        fieldArray = getArrayFromFile(fileName);
+        try{
+            validateField();
+        }catch (Exception ex){
+            throw new IllegalArgumentException("Error with file " + fileName + ".txt: " + ex.getMessage());
+        }
+
     }
 
 
@@ -18,6 +33,7 @@ public class Field {
     public ShotResult shootAt(Coordinate coordinate) {
 
         int index = coordinate.getArrayIndex();
+        int numShips = getNumberOfShips();
 
         char currentField = fieldArray[index];
         if (currentField == '~') {
@@ -27,6 +43,9 @@ public class Field {
             return ShotResult.MISS;
         } else {
             fieldArray[index] = 'x';
+            if(numShips > getNumberOfShips()){
+                return ShotResult.SUNK;
+            }
             return ShotResult.HIT;
         }
     }
@@ -74,46 +93,39 @@ public class Field {
         return builder.toString();
     }
 
-    /*
-    private void validateField(char[] field){
 
-        if(field.length != 100){
+    private void validateField(){
+        if(fieldArray.length != 100){
             throw new IllegalArgumentException("Wrong field length.");
         }
-
-        if(getNumberOfShips(field) != 5){
+        if(getNumberOfShips() != 5){
             throw new IllegalArgumentException("Wrong number of ships.");
         }
+
+        for (char i : shipsConfig.keySet()){
+            validateShipIntegrity(i, shipsConfig.get(i));
+        }
+
     }
 
-    private void validateShipIntegrity(char shipIndex, int shipLength, char[] field){
-
+    private void validateShipIntegrity(char shipIndex, int shipLength){
         int lengthCounter = 0;
-        int index = -1;
 
-        //getFirstIndex;
-        for(int i = 0; i < field.length; i++){
 
-            if(field[i] == shipIndex){
-                index = i;
-                break;
+        for (char c : fieldArray) {
+            if (c == shipIndex) {
+                lengthCounter++;
             }
         }
 
-        //shipIndex not found
-        if(index == -1){
-            throw new IllegalArgumentException("Shuipindex " + shipIndex + " not found");
+        //ship index not found
+        if(lengthCounter == 0) {
+            throw new IllegalArgumentException("Ship index " + shipIndex + " not found");
         }
-
-        if(field[index + 1] == shipIndex){
-            //ship is positioned horizontally
-        }else if(field[index + 10] == shipIndex){
-            //ship is positioned vertically
-
+        //ship has wrong length
+        else if(lengthCounter != shipLength){
+            throw new IllegalArgumentException("Ship length of " + shipIndex + " not correct");
         }
     }
-
-
-*/
 
 }

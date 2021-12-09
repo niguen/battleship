@@ -1,14 +1,8 @@
 package org.example.fileUtils;
 
 import java.io.*;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class FileResourcesUtils {
 
@@ -20,18 +14,18 @@ public class FileResourcesUtils {
         InputStream is = classloader.getResourceAsStream(fileName + ".txt");
 
         try{
+            assert is != null;
             InputStreamReader streamReader = new InputStreamReader(is, StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(streamReader);
             for (String line; (line = reader.readLine()) != null;) {
                 builder.append(line);
             }
         }catch (Exception ex){
-            System.err.println("Error, while reading file");
+            throw new IllegalArgumentException("Error while loading file " + fileName + ".txt");
         }
 
 
         String input = builder.toString();
-        System.out.println(input);
 
         input = input.replaceAll("\n", "");
         input = input.replaceAll(" ", "");
