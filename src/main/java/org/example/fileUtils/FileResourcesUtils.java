@@ -3,9 +3,19 @@ package org.example.fileUtils;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-
+/**
+ * Class to load files from the resource directory.
+ */
 public class FileResourcesUtils {
 
+    /**
+     * This method is used to load the field for each player from the resource directory.
+     * The name of the player is used to identify the field: When the name is Bob, Bob's
+     * field-file should be saved as Bob.txt
+     *
+     * @param fileName The name of the player
+     * @return An Array that represents a battleship playing field
+     */
     public static  char[] getArrayFromFile(String fileName) {
 
         StringBuilder builder = new StringBuilder();

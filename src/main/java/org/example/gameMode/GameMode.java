@@ -4,6 +4,12 @@ import org.example.player.AbstractPlayer;
 import org.example.player.AiPlayer;
 import org.example.player.HumanPlayer;
 
+
+/**
+ * This Interface represents the general structure of a game:
+ * - setup
+ * - play
+ */
 public interface GameMode {
 
     void setup();
