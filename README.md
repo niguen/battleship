@@ -13,7 +13,7 @@ While Battleship is a fun multiplayer game, playing it against a machine quickly
 Before starting the game each player will have to add a text-file 
 to the resources' directory that contains the field-setup. Alternatively one of the sample names can be used to play the game:
 
-The sample names are: Alice, bob, Dave, Charles, Dave, Peter or Simon
+The sample names are: Alice, Bob, Dave, Charles, Peter or Simon
 
 The field should contain five ships, represented by numbers. 
 All other fields are water, represented by the `~`-character. Every field has the dimension of 10 x 10 characters (You can add some spaces for better visibility).
