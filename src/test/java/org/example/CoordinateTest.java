@@ -1,4 +1,4 @@
-package org.example.gameUtils;
+package org.example;
 
 import org.example.gameUtils.Coordinate;
 import org.junit.Before;
@@ -59,12 +59,8 @@ public class CoordinateTest {
     public void testNegativeCase() {
 
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new Coordinate(null);
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Coordinate(null));
 
-        Assertions.assertThrows(IllegalArgumentException.class, () -> {
-            new Coordinate("1A");
-        });
+        Assertions.assertThrows(IllegalArgumentException.class, () -> new Coordinate("1A"));
     }
 }
